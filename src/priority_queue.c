@@ -23,7 +23,6 @@ int insert(double value, int key) {
 
     // the queue size is 100 elements
 
-    /* YOUR CODE */
     if (size_of_the_queue >= MAX_QUEUE_SIZE) {
         return 1;
     } else {
@@ -72,10 +71,9 @@ int insert(double value, int key) {
 double extract_min() {
     // returns the min value and delete it from queue
     // if queue is empty returns -infinity and print error message to the screen
-    /* YOUR CODE */
 
     if (queue == NULL) {
-        printf("StackUnderflow: STACK IS EMPTY\n");
+        printf("QueueUnderflow: QUEUE IS EMPTY\n");
         return -INFINITY;
     } else {
         double value_to_return = queue->value;

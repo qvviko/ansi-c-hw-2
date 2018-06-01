@@ -49,7 +49,6 @@ int push(double value) {
 double pop() {
     // returns top value and delete it from stack
     // if stack is empty returns -infinity and print error message to the screen
-    /* YOUR CODE */
     if (stack == NULL) {
         printf("StackUnderflow: STACK IS EMPTY\n");
         return -INFINITY;
@@ -73,7 +72,6 @@ double pop() {
 double pick() {
     // just returns the top value
     // if stack is empty returns -infinity and print error message to the screen
-    /* YOUR CODE */
     if (stack == NULL) {
         printf("StackUnderflow: STACK IS EMPTY\n");
         return -INFINITY;
