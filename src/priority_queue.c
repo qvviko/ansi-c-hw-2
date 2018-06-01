@@ -70,8 +70,6 @@ int insert(double value, int key) {
                 current->prev = new_node;
             }
         }
-// #TODO: DELETE THIS LUL
-        struct Node* hm = queue;
         ++size_of_the_queue;
         return 0;
     }
