@@ -3,6 +3,7 @@
 //
 
 #include "stack.h"
+#define MAX_STACK_SIZE 50
 
 struct Node {
     double value;

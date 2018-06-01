@@ -4,6 +4,8 @@
 
 #include "priority_queue.h"
 
+#define MAX_QUEUE_SIZE 100
+
 struct Node {
     double value;
     int key;
@@ -40,12 +42,14 @@ int insert(double value, int key) {
                 current = current->next;
             }
 
-            if (key < current->key) {
+            if (key > current->key) {
                 //Current is left
 
                 //Fix right
-                new_node->next = current->next;
-                current->next->prev = new_node;
+                if (current->next != NULL) {
+                    new_node->next = current->next;
+                    current->next->prev = new_node;
+                }
 
                 //Fix left
                 current->next = new_node;
@@ -54,14 +58,20 @@ int insert(double value, int key) {
                 //Current is right
 
                 //Fix left
-                current->prev->next = new_node;
-                new_node->prev = current->prev;
+                if (current->prev != NULL) {
+                    current->prev->next = new_node;
+                    new_node->prev = current->prev;
+                } else{
+                    queue = new_node;
+                }
 
                 //Fix right
                 new_node->next = current;
                 current->prev = new_node;
             }
         }
+// #TODO: DELETE THIS LUL
+        struct Node* hm = queue;
         ++size_of_the_queue;
         return 0;
     }
