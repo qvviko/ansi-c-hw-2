@@ -1,7 +1,7 @@
 dist: trusty
 sudo: false
 language: c
-scipt:
+script:
  - mkdir build
  - cd build
  - cmake ..
