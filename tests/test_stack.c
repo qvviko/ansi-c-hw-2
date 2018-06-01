@@ -8,26 +8,28 @@
 
 START_TEST (test_pop)
     {
-        push(5);
-        push(3);
-        push(1.1111);
-        push(7);
-        push(102);
-        push(12456);
-        push(0);
+        ck_assert_int_eq(push(3), 0);
+        ck_assert_double_eq_tol(pop(), 3, TOL_STRICT);
+        ck_assert_int_eq(push(5), 0);
+        ck_assert_int_eq(push(3), 0);
+        ck_assert_int_eq(push(1.1111), 0);
+        ck_assert_int_eq(push(7), 0);
+        ck_assert_int_eq(push(102), 0);
+        ck_assert_int_eq(push(12456), 0);
+        ck_assert_int_eq(push(0), 0);
         ck_assert_double_eq_tol(pop(), 0, TOL_STRICT);
         ck_assert_double_eq_tol(pop(), 12456, TOL_STRICT);
         ck_assert_double_eq_tol(pop(), 102, TOL_STRICT);
-        push(228);
+        ck_assert_int_eq(push(228), 0);
         ck_assert_double_eq_tol(pop(), 228, TOL_STRICT);
-        push(1337);
-        push(228);
+        ck_assert_int_eq(push(1337), 0);
+        ck_assert_int_eq(push(228), 0);
         ck_assert_double_eq_tol(pop(), 228, TOL_STRICT);
         ck_assert_double_eq_tol(pop(), 1337, TOL_STRICT);
-        push(8943);
-        push(1212);
-        push(1212112);
-        push(9997);
+        ck_assert_int_eq(push(8943), 0);
+        ck_assert_int_eq(push(1212), 0);
+        ck_assert_int_eq(push(1212112), 0);
+        ck_assert_int_eq(push(9997), 0);
         ck_assert_double_eq_tol(pop(), 9997, TOL_STRICT);
         ck_assert_double_eq_tol(pop(), 1212112, TOL_STRICT);
         ck_assert_double_eq_tol(pop(), 1212, TOL_STRICT);
