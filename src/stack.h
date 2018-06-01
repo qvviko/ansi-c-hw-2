@@ -8,6 +8,8 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "math.h"
+#define MAX_STACK_SIZE 50
+
 
 int push(double value);
 

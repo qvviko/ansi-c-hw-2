@@ -12,8 +12,7 @@ struct Node {
 };
 
 struct Node *stack = NULL; // it is your stack to work with it
-
-int size();
+static int size_of_the_stack;
 
 int push(double value) {
     // return the exit code:
@@ -23,28 +22,26 @@ int push(double value) {
 
     // the stack size is 50 elements
 
-    //We need to check if the size of the stack is already 50
-    if (stack == NULL) {
-        struct Node *new_node = (struct Node *) malloc(sizeof(struct Node));
-        new_node->value = value;
-        new_node->prev = NULL;
-        new_node->next = NULL;
-        stack = new_node;
-        return 0;
-    } else if (size() != 50) {
-        struct Node *new_node = (struct Node *) malloc(sizeof(struct Node));
-        new_node->value = value;
-        new_node->prev = NULL;
-        new_node->next = NULL;
-
-        struct Node *old = stack;
-
-        stack = new_node;
-        stack->next = old;
-        old->prev = new_node;
-        return 0;
-    } else {
+    //We need to check if the size of the stack is already MAX_STACK_SIZE
+    if (size_of_the_stack >= MAX_STACK_SIZE) {
         return 1;
+    } else {
+        struct Node *new_node = (struct Node *) malloc(sizeof(struct Node));
+        new_node->value = value;
+        new_node->prev = NULL;
+        new_node->next = NULL;
+
+        if (stack == NULL) {
+            stack = new_node;
+        } else {
+            struct Node *old = stack;
+
+            stack = new_node;
+            stack->next = old;
+            old->prev = new_node;
+        }
+        ++size_of_the_stack;
+        return 0;
     }
     return 2;
 }
@@ -61,11 +58,13 @@ double pop() {
         struct Node *old_node = stack;
 
         stack = stack->next;
+
         if (stack != NULL) {
             stack->prev = NULL;
         }
 
         free(old_node);
+        --size_of_the_stack;
         return value_to_return;
     }
 
@@ -80,19 +79,5 @@ double pick() {
         return -INFINITY;
     } else {
         return stack->value;
-    }
-}
-
-int size() {
-    if (&stack == NULL) {
-        return 0;
-    } else {
-        struct Node *current = stack;
-        int i = 1;
-        while (current->next != NULL) {
-            ++i;
-            current = current->next;
-        }
-        return i;
     }
 }

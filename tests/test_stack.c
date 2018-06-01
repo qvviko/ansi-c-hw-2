@@ -37,7 +37,6 @@ START_TEST (test_pop)
         ck_assert_double_eq_tol(pop(), 3, TOL_STRICT);
         ck_assert_double_eq_tol(pop(), 5, TOL_STRICT);
         ck_assert_double_eq(pop(), -INFINITY);
-        ck_assert_double_eq_tol(pop(), -INFINITY, TOL_STRICT);
 
     }
 END_TEST
@@ -45,13 +44,44 @@ END_TEST
 
 START_TEST (test_peek)
     {
-        //YOUR CODE HERE
+        ck_assert_double_eq(pick(), -INFINITY);
+        for (int i = 0; i < MAX_STACK_SIZE; ++i) {
+            ck_assert_int_eq(push(i), 0);
+            ck_assert_double_eq_tol(pick(), i, TOL_STRICT);
+        }
+        ck_assert_int_eq(push(228), 1);
+        ck_assert_double_eq_tol(pick(), 49, TOL_STRICT);
+        ck_assert_int_eq(push(228), 1);
+        ck_assert_double_eq_tol(pick(), 49, TOL_STRICT);
+        ck_assert_int_eq(push(228), 1);
+        ck_assert_double_eq_tol(pick(), 49, TOL_STRICT);
+
+        for (int j = MAX_STACK_SIZE - 1; j >= 0; --j) {
+            ck_assert_double_eq_tol(pop(), j, TOL_STRICT);
+            if (j != 0) {
+                ck_assert_double_eq_tol(pick(), j - 1, TOL_STRICT);
+            } else {
+                ck_assert_double_eq(pick(), -INFINITY);
+            }
+        }
+        ck_assert_double_eq(pop(), -INFINITY);
+        ck_assert_double_eq(pick(), -INFINITY);
+
     }
 END_TEST
 
 START_TEST (test_push)
     {
-        //YOUR CODE HERE
+        for (int i = 0; i < MAX_STACK_SIZE; ++i) {
+            ck_assert_int_eq(push(i), 0);
+        }
+        ck_assert_int_eq(push(228), 1);
+        ck_assert_int_eq(push(228), 1);
+        ck_assert_int_eq(push(228), 1);
+        for (int j = MAX_STACK_SIZE - 1; j >= 0; --j) {
+            ck_assert_double_eq_tol(pop(), j, TOL_STRICT);
+        }
+        ck_assert_double_eq(pop(), -INFINITY);
     }
 END_TEST
 
