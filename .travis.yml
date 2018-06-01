@@ -1,3 +1,8 @@
-language: C
-rvm:
- - check
+dist: trusty
+sudo: false
+language: c
+scipt:
+ - mkdir build
+ - cd build
+ - cmake ..
+ - make
