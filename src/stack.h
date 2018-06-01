@@ -9,7 +9,9 @@
 #include "stdlib.h"
 
 int push(double value);
+
 double pop();
+
 double pick();
 
 #endif //__STACK_H_
