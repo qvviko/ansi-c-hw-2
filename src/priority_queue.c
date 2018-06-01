@@ -38,11 +38,11 @@ int insert(double value, int key) {
             queue = new_node;
         } else {
             struct Node *current = queue;
-            while (current->next != NULL && key > (current->key)) {
+            while (current->next != NULL && key >= (current->key)) {
                 current = current->next;
             }
 
-            if (key > current->key) {
+            if (key >= current->key) {
                 //Current is left
 
                 //Fix right

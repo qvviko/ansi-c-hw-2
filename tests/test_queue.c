@@ -78,6 +78,19 @@ START_TEST (test_min)
         ck_assert_double_eq_tol(extract_min(), 90, TOL_STRICT);
         ck_assert_double_eq_tol(extract_min(), 100, TOL_STRICT);
 
+        for (int i = 0; i < 20; ++i) {
+            ck_assert_int_eq(insert(i, 1), 0);
+        }
+
+        ck_assert_int_eq(insert(56, 2), 0);
+        ck_assert_int_eq(insert(44, 0), 0);
+        ck_assert_double_eq_tol(extract_min(), 44, TOL_STRICT);
+
+        for (int i = 0; i < 20; ++i) {
+            ck_assert_double_eq_tol(extract_min(), i, TOL_STRICT);
+        }
+        ck_assert_double_eq_tol(extract_min(), 56, TOL_STRICT);
+
     }
 END_TEST
 
