@@ -7,6 +7,9 @@
 
 #include "stdio.h"
 #include "stdlib.h"
+#include "math.h"
+
+#define MAX_QUEUE_SIZE 100
 
 int insert(double value, int key);
 

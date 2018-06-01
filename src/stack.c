@@ -12,7 +12,7 @@ struct Node {
 };
 
 struct Node *stack = NULL; // it is your stack to work with it
-static int size_of_the_stack;
+static int size_of_the_stack = 0;
 
 int push(double value) {
     // return the exit code:

@@ -82,6 +82,20 @@ START_TEST (test_push)
             ck_assert_double_eq_tol(pop(), j, TOL_STRICT);
         }
         ck_assert_double_eq(pop(), -INFINITY);
+
+        //And then again
+        for (int i = 0; i < MAX_STACK_SIZE; ++i) {
+            ck_assert_int_eq(push(i), 0);
+        }
+        ck_assert_int_eq(push(228), 1);
+        ck_assert_int_eq(push(228), 1);
+        ck_assert_int_eq(push(228), 1);
+        for (int j = MAX_STACK_SIZE - 1; j >= 0; --j) {
+            ck_assert_double_eq_tol(pop(), j, TOL_STRICT);
+        }
+        ck_assert_double_eq(pop(), -INFINITY);
+        ck_assert_int_eq(push(5), 0);
+        ck_assert_double_eq_tol(pop(), 5, TOL_STRICT);
     }
 END_TEST
 
