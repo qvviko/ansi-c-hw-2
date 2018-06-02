@@ -29,6 +29,10 @@ int insert(double value, int key) {
         return 1;
     } else {
         struct Node *new_node = (struct Node *) malloc(sizeof(struct Node));
+
+        if (new_node == NULL) {
+            return 2;
+        }
         new_node->value = value;
         new_node->key = key;
         new_node->prev = NULL;
@@ -41,7 +45,6 @@ int insert(double value, int key) {
             while (current->next != NULL && key >= (current->key)) {
                 current = current->next;
             }
-
             if (key >= current->key) {
                 //Current is left
 
@@ -61,7 +64,7 @@ int insert(double value, int key) {
                 if (current->prev != NULL) {
                     current->prev->next = new_node;
                     new_node->prev = current->prev;
-                } else{
+                } else {
                     queue = new_node;
                 }
 
@@ -70,6 +73,11 @@ int insert(double value, int key) {
                 current->prev = new_node;
             }
         }
+
+        if (new_node->value != value) {
+            return 2;
+        }
+
         ++size_of_the_queue;
         return 0;
     }

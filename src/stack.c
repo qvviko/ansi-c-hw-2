@@ -2,7 +2,9 @@
 // Created by puzankova 30.05.18
 //
 
+#include <stdint.h>
 #include "stack.h"
+
 #define MAX_STACK_SIZE 50
 
 struct Node {
@@ -28,6 +30,10 @@ int push(double value) {
         return 1;
     } else {
         struct Node *new_node = (struct Node *) malloc(sizeof(struct Node));
+
+        if (new_node==NULL) {
+            return 2;
+        }
         new_node->value = value;
         new_node->prev = NULL;
         new_node->next = NULL;
@@ -41,6 +47,11 @@ int push(double value) {
             stack->next = old;
             old->prev = new_node;
         }
+
+        if (stack->value != value) {
+            return 2;
+        }
+
         ++size_of_the_stack;
         return 0;
     }
