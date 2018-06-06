@@ -3,3 +3,4 @@
 
 # By
 * Vladislav Savchuk
+* Maxim Salo
